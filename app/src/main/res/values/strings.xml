@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">BottomNavigationViewPager</string>
+
+    <string name="nav_home">Home</string>
+    <string name="nav_inbox">Inbox</string>
+    <string name="nav_camera">Camera</string>
+    <string name="nav_settings">Settings</string>
+</resources>

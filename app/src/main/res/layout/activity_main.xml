@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <net.brach.android.bnvp.BottomNavigationViewPager
+        android:id="@+id/nav_pager"
+        app:bnvp_pager_swipeable="false"
+        app:bnvp_nav_shiftMode="false"
+        app:bnvp_nav_menu="@menu/navigation"
+        app:bnvp_nav_background="#ffffff"
+        app:bnvp_nav_itemIconTint="#373C46"
+        app:bnvp_nav_itemMode="icon"
+        android:background="#eeeeee"
+        android:layout_below="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</android.support.design.widget.CoordinatorLayout>

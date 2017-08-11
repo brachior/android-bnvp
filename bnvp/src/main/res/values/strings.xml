@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BNViewPager</string>
+
+    <declare-styleable name="BottomNavigationViewPager">
+        <attr name="bnvp_pager_swipeable" format="boolean" />
+        <attr name="bnvp_pager_background" format="color" />
+
+        <attr name="bnvp_nav_menu" format="reference" />
+        <attr name="bnvp_nav_background" format="color" />
+        <attr name="bnvp_nav_shiftMode" format="boolean" />
+        <attr name="bnvp_nav_itemIconTint" format="color" />
+        <attr name="bnvp_nav_itemMode" format="enum">
+            <enum name="all" value="0" />
+            <enum name="icon" value="1" />
+            <enum name="label" value="2" />
+        </attr>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,108 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.3"
+
+    defaultConfig {
+        minSdkVersion 9
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:support-v4:25.3.1'
+}
+
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+group = 'net.brach.android'
+version = '1.0.0'
+
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            name 'Android BottomNavigationViewPager'
+            description ''
+            url 'https://github.com/brachior/android-bnvp'
+            inceptionYear '2017'
+
+            packaging 'aar'
+            groupId 'net.brach.android'
+            artifactId 'bnvp'
+            version '1.0.0'
+
+            licenses {
+                license {
+                    name 'Do What the Fuck You Want to Public License (WTFPL)'
+                    url 'http://www.wtfpl.net/'
+                }
+            }
+            scm {
+                connection 'https://github.com/brachior/android-bnvp.git'
+                url 'https://github.com/brachior/android-bnvp'
+
+            }
+            developers {
+                developer {
+                    id = 'brach'
+                    name 'Brachior'
+                }
+            }
+        }
+    }
+}
+
+Properties bintrayProperties = new Properties()
+bintrayProperties.load(project.rootProject.file('bintray.properties').newDataInputStream())
+
+bintray {
+    user = bintrayProperties.getProperty('user')
+    key = bintrayProperties.get('key')
+    configurations = ['archives']
+    pkg {
+        repo = 'android'
+        name = 'bnvp'
+        userOrg = 'brachior'
+        licenses = ['GPL-3.0']
+        vcsUrl = 'https://github.com/brachior/android-bnvp'
+        publish = true
+        version {
+            name = '1.0.0'
+            desc = 'Android BottomNavigationViewPager'
+            released = new Date()
+            vcsTag = 'v1.0.0'
+        }
+    }
+}
