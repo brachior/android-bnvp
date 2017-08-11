@@ -153,13 +153,13 @@ public class BottomNavigationViewPager extends RelativeLayout {
                 });
     }
 
-    /** {@link BottomNavigationView} **/
+    /** BottomNavigationView **/
 
     public View getItemView(int position) {
         return getItemViews()[position];
     }
 
-    /** {@link ViewPager} **/
+    /** ViewPager **/
 
     public void setAdapter(PagerAdapter adapter) {
         pager.setAdapter(adapter);
